@@ -111,36 +111,36 @@ public class Task {
     public boolean isRepeated() {
         return repeat;
     }
-}
 
-/////////////////////////////////////////////Друга практична
-    ///////
+
+///////////////////////////////////////////Друга практична
+    /////
     // повертає час наступного
-    //
-    // виконання задачі після вказаного часу
-//    public int nextTimeAfter(int current) {// допуск до nextRepeative
-//        if (current < getStartTime() && isActive() && isRepeated()) {
-//            return getStartTime();
-//
-//        } else if (current < getTime() && isActive() && !isRepeated()){
-//            return getTime();
-//        }
-//        else if ((current+interval)>this.end)
-//        {
-//            return -1;
-//        }
-//        else if (isActive() && isRepeated() && current >= getStartTime() && current < getEndTime()) {
-//            return nextRepeative(current);
-//        } return -1;
-//    }
-//    public  int nextRepeative (int current) {
-//        int countTimes;
-//        for (countTimes = this.start; countTimes < this.end; countTimes += this.interval) {
-//            if (countTimes > current) {
-//                System.out.print("the next repeating is at ");
-//                break;
-//            }
-//        }
-//        return countTimes;
-//    }
-//}
+
+    //виконання задачі після вказаного часу
+    public int nextTimeAfter(int current) {// допуск до nextRepeative
+        if (current < getStartTime() && isActive() && isRepeated()) {
+            return getStartTime();
+
+        } else if (current < getTime() && isActive() && !isRepeated()){
+            return getTime();
+        }
+        else if ((current+interval)>this.end)
+        {
+            return -1;
+        }
+        else if (isActive() && isRepeated() && current >= getStartTime() && current < getEndTime()) {
+            return nextRepeative(current);
+        } return -1;
+    }
+    public  int nextRepeative (int current) {
+        int countTimes;
+        for (countTimes = this.start; countTimes < this.end; countTimes += this.interval) {
+            if (countTimes > current) {
+                System.out.print("the next repeating is at ");
+                break;
+            }
+        }
+        return countTimes;
+    }
+}
