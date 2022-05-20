@@ -39,8 +39,6 @@ public class Task
         repeat = true;
     }
 
-
-
     public String getTitle()
     {
         return title;
