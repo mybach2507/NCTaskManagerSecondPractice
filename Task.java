@@ -3,8 +3,7 @@ package ua.edu.sumdu.j2se.mykyta.tasks;
 import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.omg.Messaging.SyncScopeHelper;
 
-public class Task
-{
+public class Task {
     private int time;
     private String title;
     private int start;
@@ -16,8 +15,7 @@ public class Task
 
     // конструює неактивну задачу, яка
     //виконується у заданий час без повторення із заданою назвою
-    public Task(String title, int time)
-    {
+    public Task(String title, int time) {
         active = false;
         this.repeat = false;
         this.time = time;
@@ -29,23 +27,20 @@ public class Task
     //неактивну задачу, яка виконується у заданому проміжку часу
     //(і початок і кінець включно) із
     //заданим інтервалом і має задану назву
-    public Task(String title, int start, int end, int interval)
-    {
+    public Task(String title, int start, int end, int interval) {
         this.title = title;
         this.start = start;
         this.end = end;
         this.interval = interval;
-        active=false;
+        active = false;
         repeat = true;
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -53,10 +48,9 @@ public class Task
 
 
     public boolean isActive() {
-       // System.out.println("this task is "+ active);
+        // System.out.println("this task is "+ active);
         return active;
     }
-
 
 
     public void setActive(boolean active) {
@@ -65,19 +59,15 @@ public class Task
 
     //Методи для зчитування та зміни
     // часу виконання для задач, що НЕ повторюються
-    public int getTime()
-    {
-        if(repeat)
-        {
+    public int getTime() {
+        if (repeat) {
             return start;
         }
-            return time;
+        return time;
     }
 
-    public void setTime(int time)
-    {
-        if(repeat)
-        {
+    public void setTime(int time) {
+        if (repeat) {
             repeat = false;
         }
         this.time = time;
@@ -85,75 +75,73 @@ public class Task
 
     //Методи для зчитування та зміни
     // часу виконання для задач, що повторюються
-    public int getStartTime()
-    {
-        if(repeat) {
+    public int getStartTime() {
+        if (repeat) {
             return start;
         }
         return time;
     }
-    public int getEndTime()
-    {
-        if(repeat==false) {
+
+    public int getEndTime() {
+        if (repeat == false) {
             return time;
         }
-            return end;
+        return end;
     }
-
 
 
     //якщо задача не повторюється метод має
     //повертати 0
 
-    public int getRepeatInterval()
-    {
-        if(repeat) {
+    public int getRepeatInterval() {
+        if (repeat) {
             return interval;
         }
         return 0;
     }
-    public void setTime(int start, int end, int interval){
-        if(repeat==false)
-        {
+
+    public void setTime(int start, int end, int interval) {
+        if (repeat == false) {
             repeat = true;
         }
         this.start = start;
         this.end = end;
         this.interval = interval;
     }
-    public boolean isRepeated()
-    {
+
+    public boolean isRepeated() {
         return repeat;
     }
+}
 
-
+/////////////////////////////////////////////Друга практична
     ///////
     // повертає час наступного
     //
     // виконання задачі після вказаного часу
-    public int nextTimeAfter(int current) {// допуск до nextRepeative
-        if (current < getStartTime() && isActive() && isRepeated()) {
-            return getStartTime();
-
-        } else if (current < getTime() && isActive() && !isRepeated()){
-            return getTime();
-        }
-        else if ((current+interval)>this.end)
-        {
-            return -1;
-        }
-        else if (isActive() && isRepeated() && current >= getStartTime() && current < getEndTime()) {
-            return nextRepeative(current);
-        } return -1;
-    }
-    public  int nextRepeative (int current) {
-        int countTimes;
-        for (countTimes = this.start; countTimes < this.end; countTimes += this.interval) {
-            if (countTimes > current) {
-                System.out.print("the next repeating is at ");
-                break;
-            }
-        }
-        return countTimes;
-    }
-}
+//    public int nextTimeAfter(int current) {// допуск до nextRepeative
+//        if (current < getStartTime() && isActive() && isRepeated()) {
+//            return getStartTime();
+//
+//        } else if (current < getTime() && isActive() && !isRepeated()){
+//            return getTime();
+//        }
+//        else if ((current+interval)>this.end)
+//        {
+//            return -1;
+//        }
+//        else if (isActive() && isRepeated() && current >= getStartTime() && current < getEndTime()) {
+//            return nextRepeative(current);
+//        } return -1;
+//    }
+//    public  int nextRepeative (int current) {
+//        int countTimes;
+//        for (countTimes = this.start; countTimes < this.end; countTimes += this.interval) {
+//            if (countTimes > current) {
+//                System.out.print("the next repeating is at ");
+//                break;
+//            }
+//        }
+//        return countTimes;
+//    }
+//}
