@@ -108,7 +108,6 @@ public class Task {
         this.end = end;
         this.interval = interval;
     }
-
     public boolean isRepeated() {
         return repeat;
     }
