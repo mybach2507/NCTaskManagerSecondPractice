@@ -133,7 +133,7 @@ public class Task
     // повертає час наступного
     //
     // виконання задачі після вказаного часу
-    public int nextTimeAfter(int current) {
+    public int nextTimeAfter(int current) {// допуск до nextRepeative
         if (current < getStartTime() && isActive() && isRepeated()) {
             return getStartTime();
 
@@ -146,7 +146,6 @@ public class Task
         }
         else if (isActive() && isRepeated() && current >= getStartTime() && current < getEndTime()) {
             return nextRepeative(current);
-
         } return -1;
     }
     public  int nextRepeative (int current) {
@@ -155,11 +154,7 @@ public class Task
             if (countTimes > current) {
                 System.out.print("the next repeating is at ");
                 break;
-
             }
-
-
-
         }
         return countTimes;
     }
