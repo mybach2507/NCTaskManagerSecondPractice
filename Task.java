@@ -114,7 +114,7 @@ public class Task
         }
         return 0;
     }
-    void setTime(int start, int end, int interval){
+    public void setTime(int start, int end, int interval){
         if(repeat==false)
         {
             repeat = true;
@@ -136,19 +136,30 @@ public class Task
     public int nextTimeAfter(int current) {
         if (current < getStartTime() && isActive() && isRepeated()) {
             return getStartTime();
+
         } else if (current < getTime() && isActive() && !isRepeated()){
             return getTime();
-        } else if (isActive() && isRepeated() && current >= getStartTime() && current < getEndTime()) {
+        }
+        else if ((current+interval)>this.end)
+        {
+            return -1;
+        }
+        else if (isActive() && isRepeated() && current >= getStartTime() && current < getEndTime()) {
             return nextRepeative(current);
+
         } return -1;
     }
     public  int nextRepeative (int current) {
         int countTimes;
         for (countTimes = this.start; countTimes < this.end; countTimes += this.interval) {
-            if (countTimes >= current) {
+            if (countTimes > current) {
                 System.out.print("the next repeating is at ");
                 break;
+
             }
+
+
+
         }
         return countTimes;
     }
